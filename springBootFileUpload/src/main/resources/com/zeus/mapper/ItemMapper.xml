@@ -7,15 +7,24 @@
 	</insert>
 
 	<select id="read" resultType="Item">
-		SELECT id,name,price,description,url FROM item WHERE id = #{id}
+		SELECT
+		id,name,price,description,url FROM item WHERE id = #{id}
 
 	</select>
 
 	<update id="update">
+		UPDATE item
+		SET name = #{name},
+		price = #{price},
+		description = #{description},
+		url = #{url}
+		WHERE id = #{id}
 
 	</update>
 
 	<delete id="delete">
+	
+	DELETE FROM item WHERE id = #{id} 
 
 	</delete>
 
@@ -24,7 +33,7 @@
 	</select>
 
 	<select id="getPicture" resultType="String">
-    SELECT url FROM item WHERE id = #{id}
+		SELECT url FROM item WHERE id = #{id}
 
 	</select>
 </mapper>

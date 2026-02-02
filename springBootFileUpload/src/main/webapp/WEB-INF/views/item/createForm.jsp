@@ -262,11 +262,11 @@ input:focus, textarea:focus {
 				<a href="/item/list" class="btn btn-list">상품 목록</a>
 				<button type="submit" class="btn btn-submit">상품 등록</button>
 				<button type="reset" class="btn btn-cancel">상품 등록 취소</button>
+				<a href="/item/update?id=${id}">수정</a>
 			</div>
 		</form>
 
-		<div class="bottom-deco">[ SYSTEM: MULTIPART DATA READY TO
-			UPLOAD ]</div>
+		<div class="bottom-deco">[ SYSTEM: MULTIPART DATA READY TO UPLOAD ]</div>
 	</div>
 	<script>
 		function updateFileName(input) {
