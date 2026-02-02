@@ -172,51 +172,41 @@
     <div class="container">
     <div class="header-box">
         <h1>MEMBER <span>LIST</span></h1>
-        <a href="/member/memberList" class="btn-write">회원리스트</a>
-        <a href="/member/insertForm" class="btn-write">회원가입</a>
+        <a href="/item/list" class="btn-write">상품목록리스트</a>
+        <a href="/item/createForm" class="btn-write">상품등록</a>
     </div>
-    
-    <div class="search-container">
-        <form action="/member/search" method="get" class="search-form">
-            <select name="searchType" class="search-select">
-                <option value="id">ID</option>
-                <option value="name">NAME</option>
-            </select>
-            <input type="text" name="keyword" class="search-input" placeholder="Search mission...">
-            <button type="submit" class="btn-search">SEARCH</button>
-        </form>
-    </div>
+       
 
     <table class="t1-table">
         <thead>
             <tr>
-                <th width="10%">NO</th>
-                <th width="20%">ID</th>
-                <th width="20%">PW</th>
-                <th width="20%">NAME</th>
+                <th width="10%">ID</th>
+                <th width="10%">NAME</th>
+                <th width="10%">PRICE</th>
+                <th width="70%">URL</th>
               
-                <th width="30%">REGDATE</th>
+                
             </tr>
         </thead>
         <tbody>
             <c:choose>
-                <c:when test="${not empty memberList}">
-                    <c:forEach var="member" items="${memberList}">
+                <c:when test="${not empty itemList}">
+                    <c:forEach var="item" items="${itemList}">
                         <tr>
-                            <td>${member.no}</td>
+                            <td>${item.id}</td>
                             <td class="title-cell">
-                                <a href="/member/detail?no=${member.no}">${member.id}</a>
+                                <a href="/item/detail?id=${item.id}">${item.name}</a>
                             </td>
-                            <td>${member.pw}</td>
-                            <td>${member.name}</td>
+                            <td>${item.price}</td>
+                            <td>${item.url}</td>
                           
-                            <td><fmt:formatDate value="${member.regDate}" pattern="yyyy.MM.dd" /></td>
+                           
                         </tr>
                     </c:forEach>
                 </c:when>
                 <c:otherwise>
                     <tr>
-                        <td colspan="5" style="padding: 50px; color: #555;">등록된 회원이 없습니다.</td>
+                        <td colspan="4" style="padding: 50px; color: #555;">등록된 상품목록이 없습니다.</td>
                     </tr>
                 </c:otherwise>
             </c:choose>
