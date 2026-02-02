@@ -141,19 +141,18 @@ body {
 			<span class="post-no">상품아이디 ${item.id}</span>
 			<h1>${item.name}</h1>
 			<div class="post-info">
-				<span>price: <b>${item.price}</b></span>
-							
+				<span>price: <b>${item.price}</b></span> 
 			</div>
 		</div>
 
 		<div class="btn-area">
-			<img alt="상품이미지 ${item.name}" src="/item/display?id=${item.id}"with ="400">
+			<img alt="상품이미지 ${item.name}" src="/item/display?id=${item.id}" width="400">
 		</div>
 
 		<div class="btn-area">
 			<a href="/item/list" class="btn btn-list">상품목록리스트</a>
 			<div class="btn-group">
-				<a href="/item/updateForm?no=${item.id}" class="btn btn-edit">상품수정하기</a>
+				<a href="/item/updateForm?id=${item.id}" class="btn btn-edit">상품수정하기</a>
 				<a href="/item/delete?id=${item.id}" class="btn btn-delete"
 					onclick="return confirm('정말 삭제하시겠습니까?')">상품삭제하기</a>
 			</div>
