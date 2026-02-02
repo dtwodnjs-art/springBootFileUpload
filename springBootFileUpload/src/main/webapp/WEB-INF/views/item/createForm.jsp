@@ -6,186 +6,216 @@
 <meta charset="UTF-8">
 <title>T1 Shop | Item Register</title>
 <style>
-/* 기존 스타일 유지 및 파일 업로드용 스타일 추가 */
 :root {
-	--t1-red: #E2012D;
-	--t1-black: #0f0f0f;
-	--t1-gray: #1a1a1a;
-	--t1-gold: #C69C6D;
+    --t1-red: #E2012D;
+    --t1-red-hover: #ff1a4a;
+    --t1-black: #0a0a0a;
+    --t1-gray: #161616;
+    --t1-gold: #C69C6D;
+    --t1-white: #eeeeee;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
-	background-color: var(--t1-black);
-	font-family: 'Pretendard', sans-serif;
-	color: #ffffff;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	min-height: 100vh;
-	margin: 0;
-	padding: 50px 0;
+    background-color: var(--t1-black);
+    /* 배경에 은은한 붉은색 그라데이션 추가 */
+    background-image: radial-gradient(circle at 50% -20%, #3a000a 0%, #0a0a0a 80%);
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+    color: var(--t1-white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
 }
 
 .write-container {
-	width: 100%;
-	max-width: 700px;
-	background: var(--t1-gray);
-	padding: 40px;
-	border-radius: 15px;
-	border: 2px solid var(--t1-red);
-	box-shadow: 0 0 30px rgba(226, 1, 45, 0.2);
+    width: 100%;
+    max-width: 650px;
+    background: rgba(22, 22, 22, 0.8);
+    backdrop-filter: blur(10px); /* 글래스모피즘 효과 */
+    padding: 50px;
+    border-radius: 20px;
+    border: 1px solid rgba(226, 1, 45, 0.3);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 20px rgba(226, 1, 45, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* 상단 데코 라인 */
+.write-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, var(--t1-red), transparent);
 }
 
 .header {
-	text-align: center;
-	margin-bottom: 40px;
+    text-align: center;
+    margin-bottom: 45px;
 }
 
 .header h1 {
-	font-size: 2rem;
-	font-weight: 900;
-	letter-spacing: -1px;
+    font-size: 2.2rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin: 0;
+    text-shadow: 0 0 15px rgba(226, 1, 45, 0.4);
 }
 
 .header span {
-	color: var(--t1-red);
+    color: var(--t1-red);
+    position: relative;
 }
 
 .form-group {
-	margin-bottom: 25px;
+    margin-bottom: 28px;
 }
 
 .form-group label {
-	display: block;
-	font-size: 0.9rem;
-	color: var(--t1-gold);
-	margin-bottom: 8px;
-	text-transform: uppercase;
-	font-weight: bold;
+    display: block;
+    font-size: 0.85rem;
+    color: var(--t1-gold);
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+    font-weight: 600;
 }
 
-/* 입력 필드 공통 스타일 */
-input[type="text"], input[type="number"], textarea {
-	width: 100%;
-	padding: 12px 15px;
-	background: #0b0b0b;
-	border: 1px solid #333;
-	border-radius: 5px;
-	color: #fff;
-	font-size: 1rem;
-	box-sizing: border-box;
-	transition: 0.3s;
-}
-
-/* 파일 업로드 스타일 */
-input[type="file"] {
-	color: #888;
-	font-size: 0.9rem;
+/* 입력 필드 스타일 */
+input[type="text"], 
+input[type="number"], 
+textarea {
+    width: 100%;
+    padding: 14px 18px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid #333;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: var(--transition);
 }
 
 textarea {
-	height: 120px;
-	resize: none;
+    height: 140px;
+    resize: none;
+    line-height: 1.6;
 }
 
 input:focus, textarea:focus {
-	border-color: var(--t1-red);
-	outline: none;
-	box-shadow: 0 0 10px rgba(226, 1, 45, 0.3);
-}
-
-.btn-area {
-	display: flex;
-	gap: 15px;
-	margin-top: 30px;
-}
-
-.btn {
-	flex: 1;
-	padding: 15px;
-	font-size: 1rem;
-	font-weight: bold;
-	border: none;
-	border-radius: 5px;
-	cursor: pointer;
-	transition: 0.3s;
-	text-transform: uppercase;
-	text-align: center;
-	text-decoration: none;
-}
-
-.btn-submit {
-	background: var(--t1-red);
-	color: #fff;
-}
-
-.btn-submit:hover {
-	background: #ff1a4a;
-	transform: translateY(-3px);
-	box-shadow: 0 5px 15px rgba(226, 1, 45, 0.5);
-}
-
-.btn-list {
-	background: #333;
-	color: #fff;
-}
-
-.btn-list:hover {
-	background: #444;
-	color: #fff;
-	transform: translateY(-3px);
-}
-
-.bottom-deco {
-	margin-top: 30px;
-	font-size: 12px;
-	color: #444;
-	text-align: center;
-	font-family: monospace;
+    border-color: var(--t1-red);
+    outline: none;
+    background: rgba(226, 1, 45, 0.05);
+    box-shadow: 0 0 15px rgba(226, 1, 45, 0.2);
 }
 
 /* 파일 업로드 래퍼 */
 .file-upload-wrapper {
-	position: relative;
-	width: 100%;
+    position: relative;
 }
 
-/* 실제 인풋은 숨김 */
 .file-input {
-	display: none;
+    display: none;
 }
 
-/* 커스텀 레이블 (버튼처럼 보이게) */
 .file-label {
-	display: flex;
-	align-items: center;
-	background: #0b0b0b;
-	border: 1px solid #333;
-	border-radius: 5px;
-	cursor: pointer;
-	overflow: hidden;
-	transition: 0.3s;
+    display: flex;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid #333;
+    border-radius: 8px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: var(--transition);
 }
 
 .file-label:hover {
-	border-color: var(--t1-red);
+    border-color: var(--t1-gold);
 }
 
-/* 왼쪽 '파일 선택' 영역 */
 .file-btn {
-	background: #222;
-	color: var(--t1-gold);
-	padding: 12px 20px;
-	font-size: 0.85rem;
-	font-weight: bold;
-	border-right: 1px solid #333;
+    background: #222;
+    color: var(--t1-gold);
+    padding: 14px 25px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    border-right: 1px solid #333;
+    transition: var(--transition);
 }
 
-/* 오른쪽 파일명 표시 영역 */
+.file-label:hover .file-btn {
+    background: var(--t1-gold);
+    color: var(--t1-black);
+}
+
 .file-name-text {
-	padding: 0 15px;
-	color: #666;
-	font-size: 0.9rem;
+    padding: 0 20px;
+    color: #888;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* 버튼 영역 */
+.btn-area {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr; /* 등록 버튼을 중앙에 크게 배치 */
+    gap: 12px;
+    margin-top: 40px;
+}
+
+.btn {
+    padding: 16px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--transition);
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-submit {
+    background: var(--t1-red);
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(226, 1, 45, 0.3);
+}
+
+.btn-submit:hover {
+    background: var(--t1-red-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(226, 1, 45, 0.5);
+}
+
+.btn-list, .btn-cancel {
+    background: #252525;
+    color: #bbb;
+    font-size: 0.8rem;
+}
+
+.btn-list:hover, .btn-cancel:hover {
+    background: #333;
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+.bottom-deco {
+    margin-top: 40px;
+    font-size: 11px;
+    color: #444;
+    text-align: center;
+    letter-spacing: 2px;
+    text-transform: uppercase;
 }
 </style>
 </head>
